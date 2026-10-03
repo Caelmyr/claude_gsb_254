@@ -1,7 +1,7 @@
 /* API 客户端：统一的 fetch 封装。 */
 window.Api = (function () {
-  async function request(method, url, body, isForm) {
-    const opts = { method, headers: {} };
+  async function request(method, url, body, isForm, signal) {
+    const opts = { method, headers: {}, signal: signal || null };
     if (isForm) {
       opts.body = body;
     } else if (body !== undefined) {
@@ -18,11 +18,11 @@ window.Api = (function () {
     return data;
   }
   return {
-    get: (u) => request("GET", u),
-    post: (u, b) => request("POST", u, b),
-    put: (u, b) => request("PUT", u, b),
-    patch: (u, b) => request("PATCH", u, b),
-    del: (u) => request("DELETE", u),
+    get: (u, opts) => request("GET", u, undefined, false, opts && opts.signal),
+    post: (u, b, opts) => request("POST", u, b, false, opts && opts.signal),
+    put: (u, b, opts) => request("PUT", u, b, false, opts && opts.signal),
+    patch: (u, b, opts) => request("PATCH", u, b, false, opts && opts.signal),
+    del: (u, opts) => request("DELETE", u, undefined, false, opts && opts.signal),
     upload(files) {
       const fd = new FormData();
       for (const f of files) fd.append("files", f);

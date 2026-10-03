@@ -172,6 +172,34 @@ input[type="color"] { width: 100%; height: 34px; border: 1px solid var(--border-
 .stage .caption { color: var(--text-faint); font-size: 12px; margin-top: 8px; }
 .stage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
+/* ---------- 参数调优：预览身份条 ---------- */
+.preview-ident {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 7px 10px; margin-bottom: 8px; font-size: 12.5px;
+}
+.preview-ident[hidden] { display: none; }
+.ident-badge {
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+  font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 20px;
+  border: 1px solid var(--border); color: var(--text-dim); background: var(--bg-hover);
+}
+.ident-badge.pending { color: var(--amber); border-color: rgba(245,181,68,.45); background: rgba(245,181,68,.1); }
+.ident-badge.ready { color: var(--green); border-color: rgba(53,199,120,.45); background: rgba(53,199,120,.1); }
+.ident-badge.error { color: var(--red); border-color: rgba(242,95,92,.45); background: rgba(242,95,92,.1); }
+.ident-text { min-width: 0; }
+.ident-fp { color: var(--text-faint); font-size: 11.5px; margin-left: auto; }
+.preview-loading { text-align: center; color: var(--text-dim); padding: 18px 8px; }
+.preview-loading .dim { font-size: 12px; margin-top: 4px; }
+.preview-params { color: var(--text-dim); font-size: 11.5px; margin-top: 8px; word-break: break-all; }
+.stage .caption .preview-params { margin-top: 0; margin-bottom: 3px; color: var(--text-dim); }
+.spinner {
+  width: 26px; height: 26px; margin: 0 auto 10px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* ---------- 滤镜链画布 ---------- */
 .pipeline-layout { display: grid; grid-template-columns: 220px 1fr 300px; gap: 14px; height: calc(100vh - 180px); min-height: 480px; }
 @media (max-width: 1200px) { .pipeline-layout { grid-template-columns: 200px 1fr; } .pipeline-inspector { grid-column: 1 / -1; } }
