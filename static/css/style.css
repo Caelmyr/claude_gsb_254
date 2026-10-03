@@ -172,6 +172,14 @@ input[type="color"] { width: 100%; height: 34px; border: 1px solid var(--border-
 .stage .caption { color: var(--text-faint); font-size: 12px; margin-top: 8px; }
 .stage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
+/* ---------- 调优预览：当前设置状态条 ---------- */
+.preview-meta { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-soft);
+  padding: 8px 12px; margin-bottom: 10px; font-size: 12px; display: grid; gap: 4px; }
+.preview-meta:empty { display: none; }
+.preview-meta-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.preview-meta-k { color: var(--text-faint); min-width: 32px; flex: none; }
+.preview-meta .badge { font-size: 11px; }
+
 /* ---------- 滤镜链画布 ---------- */
 .pipeline-layout { display: grid; grid-template-columns: 220px 1fr 300px; gap: 14px; height: calc(100vh - 180px); min-height: 480px; }
 @media (max-width: 1200px) { .pipeline-layout { grid-template-columns: 200px 1fr; } .pipeline-inspector { grid-column: 1 / -1; } }
